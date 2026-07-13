@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download — KAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=10">
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader-logo">KAI</div>
+  <div class="loader-bar-container"><div class="loader-bar"></div></div>
+  <div class="loader-text">Initializing Core</div>
+</div>
+<div class="page-transition" id="page-transition"></div>
+
+<canvas class="bg-canvas" id="bg-canvas"></canvas>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<div class="cursor-reticle"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-cross"></div>
+<div class="cursor-cross v"></div>
+
+<nav class="liquid-glass" id="nav">
+  <div class="lg-backdrop"></div><div class="lg-edge"></div>
+  <a href="index.html" class="nav-logo">KAI</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="features.html" class="nav-link">Features</a>
+    <a href="docs.html" class="nav-link">Docs</a>
+    <a href="download.html" class="nav-link active">Download</a>
+    <a href="about.html" class="nav-link">About</a>
+  </div>
+  <a href="download.html" class="nav-cta">Get KAI</a>
+</nav>
+
+<main class="page-container">
+  <div class="text-center section-spacing">
+    <span class="section-label reveal">Get KAI</span>
+    <h1 class="large-text split-text">Download KAI.</h1>
+    <p class="paragraph-text max-width-700 reveal reveal-delay-2">Native Windows Voice AI Assistant. Version 1.0.0. Install it directly on your machine and experience a new way to interact with your desktop.</p>
+  </div>
+
+  <div class="reveal" style="max-width: 700px; margin: 0 auto 6rem auto;">
+    <div class="liquid-glass glass-card" style="padding: 3rem; text-align: center;">
+      <div class="lg-backdrop"></div><div class="lg-edge"></div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 2.5rem; color: var(--text-secondary); font-size: 1rem; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding: 1.5rem 0;">
+        <div class="meta-item">Platform <span style="display: block; color: var(--text-primary); margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.2rem;">Windows 10/11</span></div>
+        <div class="meta-item">Version <span style="display: block; color: var(--text-primary); margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.2rem;">1.0.0</span></div>
+        <div class="meta-item">Size <span style="display: block; color: var(--text-primary); margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.2rem;">~149MB</span></div>
+        <div class="meta-item">Year <span style="display: block; color: var(--text-primary); margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.2rem;">2026</span></div>
+      </div>
+      <a href="KAI-Setup-1.0.0.exe" download class="btn-primary" style="width: 100%; margin-bottom: 1.5rem; font-size: 1.2rem; padding: 1.5rem;">
+        Download KAI-Setup-1.0.0.exe
+      </a>
+      <div style="display: flex; gap: 1.5rem; justify-content: center; font-size: 0.9rem; color: var(--text-tertiary);">
+        <a href="docs.html" style="border-bottom: 1px solid transparent;">System Requirements</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-spacing">
+    <div class="text-center" style="margin-bottom: 4rem;">
+      <span class="section-label reveal">Installation</span>
+      <h2 class="medium-text split-text">Up and running in minutes</h2>
+    </div>
+    <div class="grid-3">
+      <div class="reveal">
+        <div class="liquid-glass glass-card">
+          <div class="lg-backdrop"></div><div class="lg-edge"></div>
+          <span class="step-number">01</span>
+          <h3>Download</h3>
+          <p>Click the download button above to get the KAI-Setup-1.0.0.exe installer file.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="liquid-glass glass-card">
+          <div class="lg-backdrop"></div><div class="lg-edge"></div>
+          <span class="step-number">02</span>
+          <h3>Run Installer</h3>
+          <p>Double-click the executable and follow the standard Windows installation prompts.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="liquid-glass glass-card">
+          <div class="lg-backdrop"></div><div class="lg-edge"></div>
+          <span class="step-number">03</span>
+          <h3>Awaken Voice</h3>
+          <p>Open KAI, connect your Memory Core, grant microphone permissions, and start speaking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h4>KAI</h4>
+      <p>Native Windows Voice AI Assistant. Built with Electron + Python.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Product</h5>
+      <ul>
+        <li><a href="download.html">Download</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="https://github.com/Naman-Aggarwal-dev" target="_blank">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/naman-aggarwal-3a08b0307/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/naman_aggarwall/" target="_blank">Instagram</a></li>
+        <li><a href="mailto:namansingla8371@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 KAI. All rights reserved.</p>
+    <p>Made with ❤️ by Naman</p>
+  </div>
+</footer>
+
+<script src="js/app.js?v=10"></script>
+</body>
+</html>
