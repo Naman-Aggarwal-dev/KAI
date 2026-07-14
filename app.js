@@ -20,20 +20,19 @@
   })();
   
   document.body.addEventListener('mouseover', e => {
-    if(e.target.closest('a, button, .liquid-glass, .nav-link, .btn-primary, .btn-secondary')) document.body.classList.add('cursor-hover');
+    if(e.target.closest('a, button, .liquid-glass, .nav-link, .btn-primary, .btn-secondary, .faq-question, .copy-btn')) document.body.classList.add('cursor-hover');
   });
   document.body.addEventListener('mouseout', e => {
-    if(e.target.closest('a, button, .liquid-glass, .nav-link, .btn-primary, .btn-secondary')) document.body.classList.remove('cursor-hover');
+    if(e.target.closest('a, button, .liquid-glass, .nav-link, .btn-primary, .btn-secondary, .faq-question, .copy-btn')) document.body.classList.remove('cursor-hover');
   });
 })();
 
-// ====== 2. HEAVY PARTICLE BACKGROUND CANVAS ======
+// ====== 2. CINEMATIC AUDIO WAVE BACKGROUND ======
 (function(){
   const canvas = document.getElementById('bg-canvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
-  let particles = [];
-  let w, h;
+  let w, h, time = 0;
 
   function resize() {
     w = canvas.width = window.innerWidth;
@@ -42,43 +41,45 @@
   window.addEventListener('resize', resize);
   resize();
 
-  for(let i=0; i<50; i++) {
-    particles.push({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.2,
-      vy: (Math.random() - 0.5) * 0.2,
-      r: Math.random() * 1.5 + 0.5
-    });
-  }
-
   function animate() {
     ctx.clearRect(0, 0, w, h);
-    particles.forEach((p, i) => {
-      p.x += p.vx; p.y += p.vy;
-      if(p.x < 0 || p.x > w) p.vx *= -1;
-      if(p.y < 0 || p.y > h) p.vy *= -1;
+    ctx.lineWidth = 1;
+    for(let i = 0; i < 3; i++) {
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-      ctx.fill();
-      for(let j = i + 1; j < particles.length; j++) {
-        const p2 = particles[j];
-        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-        if(dist < 150) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - dist/150)})`;
-          ctx.lineWidth = 0.5; ctx.stroke();
-        }
+      ctx.strokeStyle = `rgba(45, 91, 255, ${0.1 - i * 0.03})`;
+      for(let x = 0; x <= w; x += 10) {
+        let y = h / 2;
+        y += Math.sin(x * 0.005 + time + i) * 80;
+        y += Math.sin(x * 0.01 + time * 1.5 + i) * 40;
+        y += Math.cos(x * 0.008 + time * 0.5 + i) * 60;
+        if(x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
-    });
+      ctx.stroke();
+    }
+    time += 0.01;
     requestAnimationFrame(animate);
   }
   animate();
 })();
 
-// ====== 3. KINETIC TEXT SPLITTING ======
+// ====== 3. MOUSE PARALLAX FOR BACKGROUND ======
+window.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 30;
+  const y = (e.clientY / window.innerHeight - 0.5) * 30;
+  const canvas = document.getElementById('bg-canvas');
+  if(canvas) canvas.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// ====== 4. SCROLL PROGRESS BAR ======
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.offsetHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  const progressBar = document.getElementById('scroll-progress');
+  if(progressBar) progressBar.style.width = scrollPercent + '%';
+});
+
+// ====== 5. KINETIC TEXT SPLITTING ======
 function splitText() {
   document.querySelectorAll('.split-text').forEach(el => {
     if(el.classList.contains('split-init')) return;
@@ -95,14 +96,14 @@ function splitText() {
   });
 }
 
-// ====== 4. SCROLL REVEALS ======
+// ====== 6. SCROLL REVEALS ======
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.1 });
 
-// ====== 5. MAGNETIC BUTTONS ======
+// ====== 7. MAGNETIC BUTTONS ======
 function initMagnetic() {
   document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
@@ -115,39 +116,98 @@ function initMagnetic() {
   });
 }
 
-// ====== 6. 3D TILT FOR MOCKUPS ======
-function initTilt() {
-  document.querySelectorAll('.tilt-3d').forEach(container => {
-    const mockup = container.querySelector('.app-mockup');
-    if(!mockup) return;
-    container.addEventListener('mousemove', (e) => {
-      const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      mockup.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg) scale(1.02)`;
+// ====== 8. LIVE PREVIEW TILT & TYPING ======
+function initLivePreview() {
+  const preview = document.querySelector('.live-preview-wrapper');
+  if(!preview) return;
+
+  preview.addEventListener('mousemove', (e) => {
+    const rect = preview.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    const livePreview = preview.querySelector('.live-preview');
+    livePreview.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+  });
+  preview.addEventListener('mouseleave', () => {
+    const livePreview = preview.querySelector('.live-preview');
+    livePreview.style.transform = 'rotateY(0) rotateX(0)';
+  });
+
+  const textEl = document.querySelector('.lp-text');
+  if(!textEl) return;
+  
+  const commands = [
+    "Hey KAI, open VS Code.",
+    "Hey KAI, change background to gold.",
+    "Hey KAI, find my presentation.",
+    "Hey KAI, summarize this PDF.",
+    "Hey KAI, launch Spotify."
+  ];
+  
+  let cmdIdx = 0, charIdx = 0, isDeleting = false;
+
+  function typeLoop() {
+    const currentCmd = commands[cmdIdx];
+    if (!isDeleting) {
+      textEl.innerHTML = currentCmd.substring(0, charIdx + 1) + '<span class="lp-cursor"></span>';
+      charIdx++;
+      if (charIdx === currentCmd.length) {
+        isDeleting = true;
+        setTimeout(typeLoop, 2000);
+        return;
+      }
+    } else {
+      textEl.innerHTML = currentCmd.substring(0, charIdx - 1) + '<span class="lp-cursor"></span>';
+      charIdx--;
+      if (charIdx === 0) {
+        isDeleting = false;
+        cmdIdx = (cmdIdx + 1) % commands.length;
+      }
+    }
+    setTimeout(typeLoop, isDeleting ? 40 : 80);
+  }
+  typeLoop();
+}
+
+// ====== 9. ACCORDION & COPY CODE LOGIC ======
+function initInteractions() {
+  // Accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.classList.toggle('active');
     });
-    container.addEventListener('mouseleave', () => mockup.style.transform = 'rotateY(0) rotateX(0) scale(1)');
+  });
+
+  // Copy to Clipboard
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const code = btn.nextElementSibling.innerText;
+      navigator.clipboard.writeText(code);
+      btn.innerText = 'Copied!';
+      setTimeout(() => { btn.innerText = 'Copy'; }, 2000);
+    });
   });
 }
 
 window.addEventListener('DOMContentLoaded', () => {
   splitText();
-  document.querySelectorAll('.reveal, .split-text, .reveal-scale').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal, .reveal-pop, .split-text, .reveal-scale').forEach(el => observer.observe(el));
   initMagnetic();
-  initTilt();
+  initLivePreview();
+  initInteractions();
 });
 
-// ====== 7. LOADER & PAGE TRANSITION ======
+// ====== 10. LOADER & PAGE TRANSITION ======
 window.addEventListener('load', () => {
   setTimeout(() => {
     const loader = document.getElementById('loader');
     if(loader) loader.classList.add('hidden');
-  }, 2500);
+  }, 2000); 
 });
 
 document.addEventListener('click', function(e) {
   const link = e.target.closest('a');
-  if (link && link.href && !link.href.startsWith('#') && !link.hasAttribute('download') && link.origin === window.location.origin) {
+  if (link && link.href && !link.href.startsWith('#') && !link.hasAttribute('download') && link.origin === window.location.origin && !link.target) {
     e.preventDefault();
     const pt = document.getElementById('page-transition');
     if(pt) pt.classList.add('active');
