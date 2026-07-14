@@ -6,25 +6,14 @@
 <title>Download — KAI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
-
-<div class="loader" id="loader">
-  <div class="loader-logo">KAI</div>
-  <div class="loader-bar-container"><div class="loader-bar"></div></div>
-  <div class="loader-text">Initializing Core</div>
-</div>
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="loader" id="loader"><div class="loader-ring"></div><div class="loader-logo">KAI</div><div class="loader-text">Initializing Core</div></div>
 <div class="page-transition" id="page-transition"></div>
-
-<canvas class="bg-canvas" id="bg-canvas"></canvas>
-<div class="grain"></div>
-<div class="vignette"></div>
-
-<div class="cursor-reticle"></div>
-<div class="cursor-dot"></div>
-<div class="cursor-cross"></div>
-<div class="cursor-cross v"></div>
+<canvas class="bg-canvas" id="bg-canvas"></canvas><div class="grain"></div><div class="vignette"></div>
+<div class="cursor-reticle"></div><div class="cursor-dot"></div><div class="cursor-cross"></div><div class="cursor-cross v"></div>
 
 <nav class="liquid-glass" id="nav">
   <div class="lg-backdrop"></div><div class="lg-edge"></div>
@@ -55,14 +44,31 @@
         <div class="meta-item">Size <span style="display: block; color: var(--text-primary); margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.2rem;">~149MB</span></div>
         <div class="meta-item">Year <span style="display: block; color: var(--text-primary); margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.2rem;">2026</span></div>
       </div>
-      
-      <!-- Direct GitHub Release Download Link -->
-      <a href="https://github.com/Naman-Aggarwal-dev/KAI/releases/download/AI-Assistant/KAI-Setup-1.0.0.exe" download class="btn-primary" style="width: 100%; margin-bottom: 1.5rem; font-size: 1.2rem; padding: 1.5rem;">
-        Download KAI-Setup-1.0.0.exe
-      </a>
-      
+      <a href="https://github.com/Naman-Aggarwal-dev/KAI/releases/download/AI-Assistant/KAI-Setup-1.0.0.exe" download class="btn-primary" style="width: 100%; margin-bottom: 1.5rem; font-size: 1.2rem; padding: 1.5rem;">Download KAI-Setup-1.0.0.exe</a>
       <div style="display: flex; gap: 1.5rem; justify-content: center; font-size: 0.9rem; color: var(--text-tertiary);">
-        <a href="docs.html" style="border-bottom: 1px solid transparent;">System Requirements</a>
+        <a href="#sys-req" style="border-bottom: 1px solid transparent;">System Requirements</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-spacing" id="sys-req">
+    <div class="text-center" style="margin-bottom: 4rem;">
+      <span class="section-label reveal">Compatibility</span>
+      <h2 class="medium-text split-text">System Requirements</h2>
+    </div>
+    <div class="reveal" style="max-width: 800px; margin: 0 auto;">
+      <div class="liquid-glass" style="padding: 2rem;">
+        <div class="lg-backdrop"></div><div class="lg-edge"></div>
+        <table class="req-table">
+          <thead><tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr></thead>
+          <tbody>
+            <tr><td>OS</td><td>Windows 10 (64-bit)</td><td>Windows 11 (64-bit)</td></tr>
+            <tr><td>RAM</td><td>4 GB</td><td>8 GB or more</td></tr>
+            <tr><td>Storage</td><td>500 MB free space</td><td>1 GB SSD space</td></tr>
+            <tr><td>Microphone</td><td>Any input device</td><td>Dedicated noise-canceling mic</td></tr>
+            <tr><td>Internet</td><td>Required for download</td><td>Broadband (for updates)</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -73,29 +79,33 @@
       <h2 class="medium-text split-text">Up and running in minutes</h2>
     </div>
     <div class="grid-3">
-      <div class="reveal">
-        <div class="liquid-glass glass-card">
-          <div class="lg-backdrop"></div><div class="lg-edge"></div>
-          <span class="step-number">01</span>
-          <h3>Download</h3>
-          <p>Click the download button above to get the KAI-Setup-1.0.0.exe installer file.</p>
-        </div>
+      <div class="reveal"><div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div><span class="step-number">01</span><h3>Download</h3><p>Click the download button above to get the KAI-Setup-1.0.0.exe installer file.</p></div></div>
+      <div class="reveal reveal-delay-1"><div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div><span class="step-number">02</span><h3>Run Installer</h3><p>Double-click the executable and follow the standard Windows installation prompts.</p></div></div>
+      <div class="reveal reveal-delay-2"><div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div><span class="step-number">03</span><h3>Awaken Voice</h3><p>Open KAI, connect your Memory Core, grant microphone permissions, and start speaking.</p></div></div>
+    </div>
+  </div>
+
+  <div class="section-spacing" style="max-width: 800px; margin: 0 auto;">
+    <div class="text-center" style="margin-bottom: 4rem;">
+      <span class="section-label reveal">Support</span>
+      <h2 class="medium-text split-text">Frequently Asked Questions</h2>
+    </div>
+    <div class="reveal">
+      <div class="faq-item">
+        <button class="faq-question">Is KAI free to use? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p class="paragraph-text">Yes, KAI is currently free to download and use for all Windows 10 and 11 users.</p></div>
       </div>
-      <div class="reveal reveal-delay-1">
-        <div class="liquid-glass glass-card">
-          <div class="lg-backdrop"></div><div class="lg-edge"></div>
-          <span class="step-number">02</span>
-          <h3>Run Installer</h3>
-          <p>Double-click the executable and follow the standard Windows installation prompts.</p>
-        </div>
+      <div class="faq-item">
+        <button class="faq-question">Does KAI require an internet connection? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p class="paragraph-text">Only for the initial download and software updates. Voice processing and memory management happen entirely locally on your machine.</p></div>
       </div>
-      <div class="reveal reveal-delay-2">
-        <div class="liquid-glass glass-card">
-          <div class="lg-backdrop"></div><div class="lg-edge"></div>
-          <span class="step-number">03</span>
-          <h3>Awaken Voice</h3>
-          <p>Open KAI, connect your Memory Core, grant microphone permissions, and start speaking.</p>
-        </div>
+      <div class="faq-item">
+        <button class="faq-question">Is my voice data sent to the cloud? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p class="paragraph-text">Absolutely not. KAI does not send your voice recordings or personal files to external servers. Everything stays securely on your PC.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I change the wake word? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p class="paragraph-text">Yes, you can configure custom wake phrases like "hey kai" or anything else you prefer directly in the Voice Configuration settings.</p></div>
       </div>
     </div>
   </div>
@@ -103,41 +113,19 @@
 
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <h4>KAI</h4>
-      <p>Native Windows Voice AI Assistant. Built with Electron + Python.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Product</h5>
-      <ul>
-        <li><a href="download.html">Download</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Resources</h5>
-      <ul>
-        <li><a href="docs.html">Documentation</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Connect</h5>
-      <ul>
-        <li><a href="https://github.com/Naman-Aggarwal-dev" target="_blank">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/naman-aggarwal-3a08b0307/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://www.instagram.com/naman_aggarwall/" target="_blank">Instagram</a></li>
-        <li><a href="mailto:namansingla8371@gmail.com">Email</a></li>
-      </ul>
-    </div>
+    <div class="footer-brand"><h4>KAI</h4><p>Native Windows Voice AI Assistant. Built with Electron + Python.</p></div>
+    <div class="footer-col"><h5>Product</h5><ul><li><a href="download.html">Download</a></li><li><a href="features.html">Features</a></li><li><a href="about.html">About</a></li></ul></div>
+    <div class="footer-col"><h5>Resources</h5><ul><li><a href="docs.html">Documentation</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    <div class="footer-col"><h5>Connect</h5><ul>
+      <li><a href="https://github.com/Naman-Aggarwal-dev" target="_blank">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/naman-aggarwal-3a08b0307/" target="_blank">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/naman_aggarwall/" target="_blank">Instagram</a></li>
+      <li><a href="mailto:namansingla8371@gmail.com">Email</a></li>
+    </ul></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 KAI. All rights reserved.</p>
-    <p>Made with ❤️ by Naman</p>
-  </div>
+  <div class="footer-bottom"><p>© 2026 KAI. All rights reserved.</p><p>Made with ❤️ by Naman</p></div>
 </footer>
 
-<script src="app.js?v=10"></script>
+<script src="app.js?v=14"></script>
 </body>
 </html>
