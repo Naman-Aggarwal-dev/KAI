@@ -6,13 +6,13 @@
 <title>KAI — Native Windows Voice AI Assistant</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
-
+<div class="scroll-progress" id="scroll-progress"></div>
 <div class="loader" id="loader">
+  <div class="loader-ring"></div>
   <div class="loader-logo">KAI</div>
-  <div class="loader-bar-container"><div class="loader-bar"></div></div>
   <div class="loader-text">Initializing Core</div>
 </div>
 <div class="page-transition" id="page-transition"></div>
@@ -21,10 +21,7 @@
 <div class="grain"></div>
 <div class="vignette"></div>
 
-<div class="cursor-reticle"></div>
-<div class="cursor-dot"></div>
-<div class="cursor-cross"></div>
-<div class="cursor-cross v"></div>
+<div class="cursor-reticle"></div><div class="cursor-dot"></div><div class="cursor-cross"></div><div class="cursor-cross v"></div>
 
 <nav class="liquid-glass" id="nav">
   <div class="lg-backdrop"></div><div class="lg-edge"></div>
@@ -42,7 +39,10 @@
 <main class="page-container">
   <div class="text-center section-spacing">
     <span class="section-label reveal">Native Windows Voice AI</span>
-    <h1 class="hero-title split-text">Meet KAI.</h1>
+    <h1 class="hero-title split-text">Meet <span class="text-gradient-fun">KAI.</span></h1>
+    <div class="hero-waveform reveal reveal-delay-1">
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+    </div>
     <p class="large-text text-secondary-highlight max-width-800 reveal reveal-delay-2" style="font-size: clamp(1.2rem, 3vw, 1.8rem); margin-bottom: 2.5rem;">
       Your computer shouldn't wait for commands. It should understand you.
     </p>
@@ -52,66 +52,65 @@
     </div>
   </div>
 
-  <!-- 3D Tilt Memory Core Showcase -->
-  <div class="reveal-scale section-spacing tilt-3d" style="max-width: 1000px; margin: 0 auto 10rem;">
-    <div class="liquid-glass" style="padding: 10px; border-radius: 16px;">
-      <div class="lg-backdrop"></div><div class="lg-edge"></div>
-      <div class="app-mockup" style="aspect-ratio: 16/9;">
-        <img src="https://z-cdn-media.chatglm.cn/files/57a9fd76-386b-4c9f-b0e4-22a5346ffcbe.png?auth_key=1883968080-4c55c2f9c2d241f8a9ffd6fa66d68e0e-0-b930aed3c6624a0838c7af542603aeae" alt="KAI Memory Core Interface">
+  <div class="reveal-scale section-spacing live-preview-wrapper">
+    <div class="live-preview">
+      <div class="lp-header">
+        <div class="lp-dot"></div><div class="lp-dot"></div><div class="lp-dot"></div>
+        <div class="lp-title">KAI.exe - Memory Core</div>
+      </div>
+      <div class="lp-body">
+        <div class="lp-sidebar">
+          <div class="lp-avatar"></div>
+          <div class="lp-nav-icon active"></div>
+          <div class="lp-nav-icon"></div>
+          <div class="lp-nav-icon"></div>
+        </div>
+        <div class="lp-main">
+          <div class="lp-status">● Listening</div>
+          <div class="lp-text"></div>
+          <div class="lp-waveform">
+            <div class="lp-bar"></div><div class="lp-bar"></div><div class="lp-bar"></div><div class="lp-bar"></div><div class="lp-bar"></div><div class="lp-bar"></div><div class="lp-bar"></div><div class="lp-bar"></div><div class="lp-bar"></div><div class="lp-bar"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Marquee Filler -->
   <div class="marquee">
     <div class="marquee-content">
-      <div class="marquee-item">Voice Native</div>
-      <div class="marquee-item">Memory Core</div>
-      <div class="marquee-item">Local AI</div>
-      <div class="marquee-item">Electron + Python</div>
-      <div class="marquee-item">Windows 10/11</div>
-      <div class="marquee-item">Voice Native</div>
-      <div class="marquee-item">Memory Core</div>
-      <div class="marquee-item">Local AI</div>
-      <div class="marquee-item">Electron + Python</div>
-      <div class="marquee-item">Windows 10/11</div>
+      <div class="marquee-item">Voice Native</div><div class="marquee-item">Memory Core</div><div class="marquee-item">Local AI</div><div class="marquee-item">Electron + Python</div><div class="marquee-item">Windows 10/11</div>
+      <div class="marquee-item">Voice Native</div><div class="marquee-item">Memory Core</div><div class="marquee-item">Local AI</div><div class="marquee-item">Electron + Python</div><div class="marquee-item">Windows 10/11</div>
     </div>
   </div>
 
-  <!-- Bento Grid Features -->
   <div class="bento-grid">
-    <div class="bento-item reveal">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
+    <div class="bento-item reveal-pop">
+      <div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div>
         <h3>Memory Core</h3>
         <p>Awaken KAI's voice by connecting the Memory Core. It securely retains context, identity, and preferences locally.</p>
       </div>
     </div>
-    <div class="bento-item reveal reveal-delay-1">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
+    <div class="bento-item reveal-pop reveal-delay-1">
+      <div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div>
         <h3>Playful Topics</h3>
         <p>Ask for witty jokes, change the atmosphere, or open YouTube. KAI understands playful contextual requests.</p>
       </div>
     </div>
-    <div class="bento-item reveal reveal-delay-2">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
+    <div class="bento-item reveal-pop reveal-delay-2">
+      <div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div>
         <h3>Recalls</h3>
         <p>Persistent recollection files. View, manage, and commit memories across categories securely.</p>
       </div>
     </div>
-    <div class="bento-item reveal reveal-delay-3">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
+    <div class="bento-item reveal-pop reveal-delay-3">
+      <div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div>
         <span class="coming-soon-tag">Coming Soon</span>
         <h3>Share Screen</h3>
         <p>Allow KAI to see and analyze your screen for deep contextual awareness and assistance.</p>
       </div>
     </div>
-    <div class="bento-item reveal">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
+    <div class="bento-item reveal-pop">
+      <div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div>
         <h3>Voice Config</h3>
         <p>Fine-tune microphone sensitivity, set custom wake phrases like "hey kai", and adjust general settings seamlessly.</p>
       </div>
@@ -126,41 +125,19 @@
 
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <h4>KAI</h4>
-      <p>Native Windows Voice AI Assistant. Built with Electron + Python.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Product</h5>
-      <ul>
-        <li><a href="download.html">Download</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Resources</h5>
-      <ul>
-        <li><a href="docs.html">Documentation</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Connect</h5>
-      <ul>
-        <li><a href="https://github.com/Naman-Aggarwal-dev" target="_blank">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/naman-aggarwal-3a08b0307/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://www.instagram.com/naman_aggarwall/" target="_blank">Instagram</a></li>
-        <li><a href="mailto:namansingla8371@gmail.com">Email</a></li>
-      </ul>
-    </div>
+    <div class="footer-brand"><h4>KAI</h4><p>Native Windows Voice AI Assistant. Built with Electron + Python.</p></div>
+    <div class="footer-col"><h5>Product</h5><ul><li><a href="download.html">Download</a></li><li><a href="features.html">Features</a></li><li><a href="about.html">About</a></li></ul></div>
+    <div class="footer-col"><h5>Resources</h5><ul><li><a href="docs.html">Documentation</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    <div class="footer-col"><h5>Connect</h5><ul>
+      <li><a href="https://github.com/Naman-Aggarwal-dev" target="_blank">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/naman-aggarwal-3a08b0307/" target="_blank">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/naman_aggarwall/" target="_blank">Instagram</a></li>
+      <li><a href="mailto:namansingla8371@gmail.com">Email</a></li>
+    </ul></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 KAI. All rights reserved.</p>
-    <p>Made with ❤️ by Naman</p>
-  </div>
+  <div class="footer-bottom"><p>© 2026 KAI. All rights reserved.</p><p>Made with ❤️ by Naman</p></div>
 </footer>
 
-<script src="app.js?v=10"></script>
+<script src="app.js?v=14"></script>
 </body>
 </html>
