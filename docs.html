@@ -6,25 +6,14 @@
 <title>Documentation — KAI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
-
-<div class="loader" id="loader">
-  <div class="loader-logo">KAI</div>
-  <div class="loader-bar-container"><div class="loader-bar"></div></div>
-  <div class="loader-text">Initializing Core</div>
-</div>
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="loader" id="loader"><div class="loader-ring"></div><div class="loader-logo">KAI</div><div class="loader-text">Initializing Core</div></div>
 <div class="page-transition" id="page-transition"></div>
-
-<canvas class="bg-canvas" id="bg-canvas"></canvas>
-<div class="grain"></div>
-<div class="vignette"></div>
-
-<div class="cursor-reticle"></div>
-<div class="cursor-dot"></div>
-<div class="cursor-cross"></div>
-<div class="cursor-cross v"></div>
+<canvas class="bg-canvas" id="bg-canvas"></canvas><div class="grain"></div><div class="vignette"></div>
+<div class="cursor-reticle"></div><div class="cursor-dot"></div><div class="cursor-cross"></div><div class="cursor-cross v"></div>
 
 <nav class="liquid-glass" id="nav">
   <div class="lg-backdrop"></div><div class="lg-edge"></div>
@@ -46,86 +35,90 @@
     <p class="paragraph-text max-width-700 reveal reveal-delay-2">Everything you need to integrate, control, and extend the KAI Memory Core and Voice Interface.</p>
   </div>
 
-  <div class="bento-grid">
-    <div class="bento-item reveal">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
-        <h3>Getting Started</h3>
-        <p>Learn how to install the KAI-Setup-1.0.0.exe, grant microphone permissions, and connect your Memory Core to awaken the voice interface.</p>
+  <div class="max-width-800 section-spacing">
+    <div class="reveal">
+      <div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div>
+        <h3 class="medium-text" style="font-size: 1.5rem; margin-bottom: 1rem;">1. Python Backend API</h3>
+        <p class="paragraph-text">KAI's backend runs on Python, allowing you to intercept voice intents and trigger custom scripts. Use the <code style="color: #fff; background: rgba(255,255,255,0.1); padding: 0.2rem 0.4rem; border-radius: 4px;">kai.api</code> module to register custom commands.</p>
+        
+        <div class="code-block">
+          <button class="copy-btn">Copy</button>
+          <pre><span class="code-key">import</span> kai.api
+
+<span class="code-comment"># Register a custom voice command</span>
+<span class="code-key">def</span> <span class="code-fn">handle_custom_command</span>(intent, entities):
+    print(<span class="code-str">f"Received intent: {intent}"</span>)
+    <span class="code-key">return</span> <span class="code-str">"Command executed successfully"</span>
+
+kai.api.register_command(
+    intent=<span class="code-str">"change_background"</span>,
+    callback=handle_custom_command
+)</pre>
+        </div>
       </div>
     </div>
-    <div class="bento-item reveal reveal-delay-1">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
-        <h3>Voice Commands API</h3>
-        <p>Explore the native Python backend API for intercepting voice intents and triggering custom system actions.</p>
+
+    <div class="reveal" style="margin-top: 2rem;">
+      <div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div>
+        <h3 class="medium-text" style="font-size: 1.5rem; margin-bottom: 1rem;">2. Memory Core Schema</h3>
+        <p class="paragraph-text">The Memory Core stores data locally in a secure JSON format. You can read and manipulate this schema to sync memories across instances (coming in v2).</p>
+        
+        <div class="code-block">
+          <button class="copy-btn">Copy</button>
+          <pre><span class="code-comment">// ~/.kai/memory_core.json</span>
+{
+  <span class="code-key">"identity"</span>: {
+    <span class="code-key">"name"</span>: <span class="code-str">"User"</span>,
+    <span class="code-key">"location"</span>: <span class="code-str">"Local"</span>
+  },
+  <span class="code-key">"preferences"</span>: {
+    <span class="code-key">"theme"</span>: <span class="code-str">"dark"</span>,
+    <span class="code-key">"wake_word"</span>: <span class="code-str">"hey kai"</span>
+  },
+  <span class="code-key">"recalls"</span>: [
+    { <span class="code-key">"id"</span>: <span class="code-str">"r_001"</span>, <span class="code-key">"text"</span>: <span class="code-str">"Likes Python over JS"</span> }
+  ]
+}</pre>
+        </div>
       </div>
     </div>
-    <div class="bento-item reveal reveal-delay-2">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
-        <h3>Electron UI Hooks</h3>
-        <p>Customize the 3D avatar interface and hook into Topics and Recalls.</p>
-      </div>
-    </div>
-    <div class="bento-item reveal reveal-delay-3">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
-        <h3>System Requirements</h3>
-        <p>Windows 10/11, 8GB RAM, Microphone. ~149MB Disk Space.</p>
-      </div>
-    </div>
-    <div class="bento-item reveal">
-      <div class="liquid-glass glass-card">
-        <div class="lg-backdrop"></div><div class="lg-edge"></div>
-        <h3>Memory Core Schema</h3>
-        <p>Understand how KAI stores and retrieves local context securely on your machine.</p>
+
+    <div class="reveal" style="margin-top: 2rem;">
+      <div class="liquid-glass glass-card"><div class="lg-backdrop"></div><div class="lg-edge"></div>
+        <h3 class="medium-text" style="font-size: 1.5rem; margin-bottom: 1rem;">3. Electron UI Hooks</h3>
+        <p class="paragraph-text">Customize the 3D avatar interface by hooking into KAI's Electron IPC events. Listen for state changes and update your frontend accordingly.</p>
+        
+        <div class="code-block">
+          <button class="copy-btn">Copy</button>
+          <pre><span class="code-comment">// renderer.js</span>
+window.kai.ipc.on(<span class="code-str">'core:status'</span>, (event, data) => {
+  <span class="code-key">if</span> (data.status === <span class="code-str">'listening'</span>) {
+    triggerAvatarAnimation(<span class="code-str">'listen'</span>);
+  }
+});</pre>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="text-center reveal">
-    <a href="download.html" class="btn-primary">Download KAI</a>
-  </div>
+  <div class="text-center reveal"><a href="download.html" class="btn-primary">Download KAI</a></div>
 </main>
 
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <h4>KAI</h4>
-      <p>Native Windows Voice AI Assistant. Built with Electron + Python.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Product</h5>
-      <ul>
-        <li><a href="download.html">Download</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Resources</h5>
-      <ul>
-        <li><a href="docs.html">Documentation</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Connect</h5>
-      <ul>
-        <li><a href="https://github.com/Naman-Aggarwal-dev" target="_blank">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/naman-aggarwal-3a08b0307/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://www.instagram.com/naman_aggarwall/" target="_blank">Instagram</a></li>
-        <li><a href="mailto:namansingla8371@gmail.com">Email</a></li>
-      </ul>
-    </div>
+    <div class="footer-brand"><h4>KAI</h4><p>Native Windows Voice AI Assistant. Built with Electron + Python.</p></div>
+    <div class="footer-col"><h5>Product</h5><ul><li><a href="download.html">Download</a></li><li><a href="features.html">Features</a></li><li><a href="about.html">About</a></li></ul></div>
+    <div class="footer-col"><h5>Resources</h5><ul><li><a href="docs.html">Documentation</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    <div class="footer-col"><h5>Connect</h5><ul>
+      <li><a href="https://github.com/Naman-Aggarwal-dev" target="_blank">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/naman-aggarwal-3a08b0307/" target="_blank">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/naman_aggarwall/" target="_blank">Instagram</a></li>
+      <li><a href="mailto:namansingla8371@gmail.com">Email</a></li>
+    </ul></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 KAI. All rights reserved.</p>
-    <p>Made with ❤️ by Naman</p>
-  </div>
+  <div class="footer-bottom"><p>© 2026 KAI. All rights reserved.</p><p>Made with ❤️ by Naman</p></div>
 </footer>
 
-<script src="app.js?v=10"></script>
+<script src="app.js?v=14"></script>
 </body>
 </html>
